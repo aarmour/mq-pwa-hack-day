@@ -1,6 +1,6 @@
 {
-  "name": "ngPoland Guide",
-  "short_name": "ngPoland",
+  "name": "MapQuest",
+  "short_name": "MapQuest",
   "display": "standalone",
   "icons": [{
     "src": "\/assets\/favicons\/favicon-32x32.png",
