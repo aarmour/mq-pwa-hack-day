@@ -4,3 +4,8 @@
   flex-direction: column;
   height: 100%;
 }
+
+.bottom-nav .nav-item {
+  flex: 1;
+  text-align: center;
+}
