@@ -85,6 +85,7 @@ gulp.task('task:shell', function () {
 gulp.task('task:static', function () { return gulp
     .src([
     'manifest.webmanifest',
+    'MaterialIcons-Regular.woff2',
     'node_modules/zone.js/dist/zone.js',
     'node_modules/reflect-metadata/Reflect.js',
     'node_modules/@angular/material/core/theming/prebuilt/indigo-pink.css',
@@ -113,7 +114,7 @@ gulp.task('connect', function () {
     connect.server({
         root: 'dist',
         livereload: false,
-        port: 8080
+        port: 4200
     });
 });
 gulp.task('html', function () {

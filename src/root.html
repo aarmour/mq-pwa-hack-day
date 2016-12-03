@@ -1,15 +1,18 @@
-<md-toolbar color="primary">
-
-    <span>{{title}}</span>
-
+<md-toolbar color="primary" *shellRender></md-toolbar>
+<md-toolbar color="primary" *shellNoRender>
+  <button md-icon-button class="md-icon-button">
+    <md-icon>menu</md-icon>
+  </button>
+  <button md-button style="flex: 1;">
+    Find Places
+  </button>
+  <button md-button style="flex: 1;">
+    Directions
+  </button>
 </md-toolbar>
 
 <md-progress-bar mode="indeterminate" *shellRender></md-progress-bar>
 
 <div *shellNoRender>
-
-    <place-list></place-list>
-
-    <dashboard></dashboard>
 
 </div>
