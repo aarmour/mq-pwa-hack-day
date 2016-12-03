@@ -11,12 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var MapComponent = (function () {
     function MapComponent() {
-        mapboxgl.accessToken = 'pk.eyJ1IjoiYWFybW91ciIsImEiOiJjaXB4NW1lM3Ywd2FqZm9tMnl0cmZmcXpkIn0.NDfEUrCKD_VicFC4Ux_Whw';
+        mapboxgl.accessToken = 'pk.eyJ1IjoibWFwcXVlc3QiLCJhIjoiY2Q2N2RlMmNhY2NiZTRkMzlmZjJmZDk0NWU0ZGJlNTMifQ.mPRiEubbajc6a5y9ISgydg';
     }
     MapComponent.prototype.ngAfterViewInit = function () {
         this.map = new mapboxgl.Map({
             container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v9'
+            style: 'https://api.mapbox.com/styles/v1/mapquest/ciuike7qg000i2inyel1id74o?access_token=pk.eyJ1IjoibWFwcXVlc3QiLCJhIjoiY2Q2N2RlMmNhY2NiZTRkMzlmZjJmZDk0NWU0ZGJlNTMifQ.mPRiEubbajc6a5y9ISgydg'
         });
     };
     return MapComponent;
