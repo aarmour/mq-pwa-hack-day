@@ -13,6 +13,12 @@
 
 <md-progress-bar mode="indeterminate" *shellRender></md-progress-bar>
 
-<div *shellNoRender>
+<div style="flex: 1;" *shellRender></div>
 
+<md-toolbar *shellRender></md-toolbar>
+
+<div class="body" *shellNoRender>
+  <mq-map></mq-map>
+  <md-toolbar>
+  </md-toolbar>
 </div>

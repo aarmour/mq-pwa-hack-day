@@ -9,23 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
-require("rxjs/add/operator/toPromise");
-var PlaceService = (function () {
-    function PlaceService(http) {
-        this.http = http;
-        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.url = './assets/places.json';
+var platform_browser_1 = require("@angular/platform-browser");
+var common_1 = require("@angular/common");
+var map_component_1 = require("./map.component");
+var MapModule = (function () {
+    function MapModule() {
     }
-    PlaceService.prototype.getPlaces = function () {
-        return this.http.get(this.url)
-            .toPromise()
-            .then(function (response) { return response.json(); });
-    };
-    return PlaceService;
+    return MapModule;
 }());
-PlaceService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], PlaceService);
-exports.PlaceService = PlaceService;
+MapModule = __decorate([
+    core_1.NgModule({
+        imports: [
+            platform_browser_1.BrowserModule,
+            common_1.CommonModule
+        ],
+        declarations: [
+            map_component_1.MapComponent
+        ],
+        exports: [
+            map_component_1.MapComponent
+        ],
+        providers: []
+    }),
+    __metadata("design:paramtypes", [])
+], MapModule);
+exports.MapModule = MapModule;

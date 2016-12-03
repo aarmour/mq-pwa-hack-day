@@ -12,7 +12,7 @@ var app_shell_1 = require("@angular/app-shell");
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var root_1 = require("./root");
-var place_1 = require("./place");
+var map_1 = require("./map");
 var dashboard_1 = require("./dashboard");
 var material_1 = require("@angular/material");
 var AppModule = (function () {
@@ -29,9 +29,9 @@ AppModule = __decorate([
         imports: [
             app_shell_1.AppShellModule,
             common_1.CommonModule,
-            place_1.PlaceModule,
-            dashboard_1.DashboardModule,
             material_1.MaterialModule.forRoot(),
+            dashboard_1.DashboardModule,
+            map_1.MapModule,
         ]
     }),
     __metadata("design:paramtypes", [])

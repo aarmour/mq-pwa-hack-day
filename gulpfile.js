@@ -89,6 +89,8 @@ gulp.task('task:static', function () { return gulp
     'node_modules/zone.js/dist/zone.js',
     'node_modules/reflect-metadata/Reflect.js',
     'node_modules/@angular/material/core/theming/prebuilt/indigo-pink.css',
+    'node_modules/mapbox-gl/dist/mapbox-gl.js',
+    'node_modules/mapbox-gl/dist/mapbox-gl.css',
     'tmp/rollup/app.js',
     'tmp/app-shell/index.html',
     'push-sw.js'
