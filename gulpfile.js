@@ -116,7 +116,7 @@ gulp.task('connect', function () {
     connect.server({
         root: 'dist',
         livereload: false,
-        port: 4200
+        port: 4321
     });
 });
 gulp.task('html', function () {
