@@ -1,13 +1,16 @@
 const commonJs = require('rollup-plugin-commonjs');
 const childProcess = require('child_process');
 const fs = require('fs');
+const path = require('path');
 const gulp = require('gulp');
 const nodeResolve = require('rollup-plugin-node-resolve');
 const rimraf = require('rimraf');
 const rollup = require('rollup');
 const runSequence = require('run-sequence');
+const swPrecache = require('sw-precache');
 const closure = require('google-closure-compiler-js');
-const  connect = require('gulp-connect');
+const connect = require('gulp-connect');
+const packageJson = require('./package.json');
 
 class RollupRx {
   resolveId(id, from){
@@ -30,7 +33,69 @@ function closureCompilerPlugin(options: any = {}){
   }
 }
 
-import {gulpGenerateManifest, gulpAddStaticFiles} from '@angular/service-worker/build';
+function writeServiceWorkerFile(rootDir, handleFetch, callback) {
+  const config = {
+    cacheId: packageJson.name,
+    /*
+    dynamicUrlToDependencies: {
+      'dynamic/page1': [
+        path.join(rootDir, 'views', 'layout.jade'),
+        path.join(rootDir, 'views', 'page1.jade')
+      ],
+      'dynamic/page2': [
+        path.join(rootDir, 'views', 'layout.jade'),
+        path.join(rootDir, 'views', 'page2.jade')
+      ]
+    },
+    */
+    // If handleFetch is false (i.e. because this is called from generate-service-worker-dev), then
+    // the service worker will precache resources but won't actually serve them.
+    // This allows you to test precaching behavior without worry about the cache preventing your
+    // local changes from being picked up during the development cycle.
+    handleFetch: handleFetch,
+    // logger: $.util.log,
+    runtimeCaching: [
+      {
+        urlPattern: /api\.mapbox\.com\/styles\/v1\/mapquest\//,
+        handler: 'networkFirst',
+        // See https://github.com/GoogleChrome/sw-toolbox#options
+        options: {
+          cache: {
+            name: 'style-cache'
+          }
+        }
+      },
+      {
+        urlPattern: /tiles\.mapbox\.com/,
+        handler: 'networkFirst',
+        options: {
+          cache: {
+            name: 'tile-cache'
+          }
+        }
+      },
+      {
+        urlPattern: /api\.mapbox\.com\/v4\/mapbox\.mapbox-terrain-v2/,
+        handler: 'networkFirst',
+        options: {
+          cache: {
+            name: 'tile-cache'
+          }
+        }
+      }
+    ],
+    staticFileGlobs: [
+      `${rootDir}/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff2,manifest}`
+    ],
+    stripPrefix: rootDir + '/',
+    // verbose defaults to false, but for the purposes of this demo, log more.
+    verbose: true
+  };
+
+  swPrecache.write(path.join(rootDir, 'service-worker.js'), config, callback);
+}
+
+import { gulpGenerateManifest, gulpAddStaticFiles } from '@angular/service-worker/build';
 
 gulp.task('build', done => runSequence(
   'task:clean',
@@ -137,13 +202,7 @@ gulp.task('task:assets', () => gulp
   .pipe(gulp.dest('dist/assets'))
 );
 
-gulp.task('task:service-worker', () => gulp
-  .src('ngsw-manifest.json')
-  .pipe(gulpAddStaticFiles(gulp.src([
-    'dist/**/*.*'
-  ]), {manifestKey: 'static'}))
-  .pipe(gulp.dest('dist'))
-);
+gulp.task('task:service-worker', (callback) => writeServiceWorkerFile('dist', true, callback));
 
 gulp.task('connect', function() {
   connect.server({

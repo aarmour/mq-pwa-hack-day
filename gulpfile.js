@@ -2,13 +2,16 @@
 var commonJs = require('rollup-plugin-commonjs');
 var childProcess = require('child_process');
 var fs = require('fs');
+var path = require('path');
 var gulp = require('gulp');
 var nodeResolve = require('rollup-plugin-node-resolve');
 var rimraf = require('rimraf');
 var rollup = require('rollup');
 var runSequence = require('run-sequence');
+var swPrecache = require('sw-precache');
 var closure = require('google-closure-compiler-js');
 var connect = require('gulp-connect');
+var packageJson = require('./package.json');
 var RollupRx = (function () {
     function RollupRx() {
     }
@@ -32,7 +35,47 @@ function closureCompilerPlugin(options) {
         }
     };
 }
-var build_1 = require("@angular/service-worker/build");
+function writeServiceWorkerFile(rootDir, handleFetch, callback) {
+    var config = {
+        cacheId: packageJson.name,
+        handleFetch: handleFetch,
+        runtimeCaching: [
+            {
+                urlPattern: /api\.mapbox\.com\/styles\/v1\/mapquest\//,
+                handler: 'networkFirst',
+                options: {
+                    cache: {
+                        name: 'style-cache'
+                    }
+                }
+            },
+            {
+                urlPattern: /tiles\.mapbox\.com/,
+                handler: 'networkFirst',
+                options: {
+                    cache: {
+                        name: 'tile-cache'
+                    }
+                }
+            },
+            {
+                urlPattern: /api\.mapbox\.com\/v4\/mapbox\.mapbox-terrain-v2/,
+                handler: 'networkFirst',
+                options: {
+                    cache: {
+                        name: 'tile-cache'
+                    }
+                }
+            }
+        ],
+        staticFileGlobs: [
+            rootDir + "/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff2,manifest}"
+        ],
+        stripPrefix: rootDir + '/',
+        verbose: true
+    };
+    swPrecache.write(path.join(rootDir, 'service-worker.js'), config, callback);
+}
 gulp.task('build', function (done) { return runSequence('task:clean', 'task:ngc', 'task:rollup', 'task:shell', [
     'task:static',
     'task:assets',
@@ -106,12 +149,7 @@ gulp.task('task:assets', function () { return gulp
     'assets/**/*.*'
 ])
     .pipe(gulp.dest('dist/assets')); });
-gulp.task('task:service-worker', function () { return gulp
-    .src('ngsw-manifest.json')
-    .pipe(build_1.gulpAddStaticFiles(gulp.src([
-    'dist/**/*.*'
-]), { manifestKey: 'static' }))
-    .pipe(gulp.dest('dist')); });
+gulp.task('task:service-worker', function (callback) { return writeServiceWorkerFile('dist', true, callback); });
 gulp.task('connect', function () {
     connect.server({
         root: 'dist',

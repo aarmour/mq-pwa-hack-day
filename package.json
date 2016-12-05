@@ -1,5 +1,5 @@
 {
-  "name": "ng2-pwa-weather",
+  "name": "mq-pwa-hack-day",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -46,6 +46,7 @@
     "zone.js": "^0.6.25"
   },
   "devDependencies": {
-    "gulp-connect": "^5.0.0"
+    "gulp-connect": "^5.0.0",
+    "sw-precache": "^4.2.3"
   }
 }
