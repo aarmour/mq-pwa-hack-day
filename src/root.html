@@ -1,15 +1,4 @@
 <md-toolbar color="primary" *shellRender></md-toolbar>
-<md-toolbar color="primary" *shellNoRender>
-  <button md-icon-button>
-    <md-icon>menu</md-icon>
-  </button>
-  <button md-button style="flex: 1;">
-    Find Places
-  </button>
-  <button md-button style="flex: 1;">
-    Directions
-  </button>
-</md-toolbar>
 
 <md-progress-bar mode="indeterminate" *shellRender></md-progress-bar>
 
@@ -17,33 +6,53 @@
 
 <md-toolbar *shellRender></md-toolbar>
 
-<div class="body" *shellNoRender>
-  <mq-map></mq-map>
-  <md-toolbar class="bottom-nav">
-    <span class="nav-item">
-      <button md-icon-button>
-        <md-icon>hotel</md-icon>
-      </button>
-    </span>
-    <span class="nav-item">
-      <button md-icon-button>
-        <md-icon>local_gas_station</md-icon>
-      </button>
-    </span>
-    <span class="nav-item">
-      <button md-icon-button>
-        <md-icon>restaurant</md-icon>
-      </button>
-    </span>
-    <span class="nav-item">
-      <button md-icon-button>
-        <md-icon>local_cafe</md-icon>
-      </button>
-    </span>
-    <span class="nav-item">
-      <button md-icon-button>
-        <md-icon>local_bar</md-icon>
-      </button>
-    </span>
+<md-sidenav-layout *shellNoRender>
+
+  <md-sidenav #start (open)="closeStartButton.focus()">
+    <button md-button #closeStartButton (click)="start.close()">Close</button>
+  </md-sidenav>
+
+  <md-toolbar color="primary">
+    <button md-icon-button (click)="start.open()">
+      <md-icon>menu</md-icon>
+    </button>
+    <button md-button style="flex: 1;">
+      Find Places
+    </button>
+    <button md-button style="flex: 1;">
+      Directions
+    </button>
   </md-toolbar>
-</div>
+
+  <div class="body">
+    <mq-map></mq-map>
+    <md-toolbar class="bottom-nav">
+      <span class="nav-item">
+        <button md-icon-button>
+          <md-icon>hotel</md-icon>
+        </button>
+      </span>
+      <span class="nav-item">
+        <button md-icon-button>
+          <md-icon>local_gas_station</md-icon>
+        </button>
+      </span>
+      <span class="nav-item">
+        <button md-icon-button>
+          <md-icon>restaurant</md-icon>
+        </button>
+      </span>
+      <span class="nav-item">
+        <button md-icon-button>
+          <md-icon>local_cafe</md-icon>
+        </button>
+      </span>
+      <span class="nav-item">
+        <button md-icon-button>
+          <md-icon>local_bar</md-icon>
+        </button>
+      </span>
+    </md-toolbar>
+  </div>
+
+</md-sidenav-layout>

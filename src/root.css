@@ -1,8 +1,15 @@
-:host,
+md-sidenav-layout {
+  height: 100%;
+}
+
+md-sidenav {
+  min-width: 300px;
+}
+
 .body {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1 100%;
 }
 
 .bottom-nav .nav-item {
