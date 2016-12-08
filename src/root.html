@@ -9,7 +9,9 @@
 <md-sidenav-layout *shellNoRender>
 
   <md-sidenav #start (open)="closeStartButton.focus()">
-    <button md-button #closeStartButton (click)="start.close()">Close</button>
+    <button md-icon-button #closeStartButton (click)="start.close()">
+      <md-icon>close</md-icon>
+    </button>
   </md-sidenav>
 
   <md-toolbar color="primary">
