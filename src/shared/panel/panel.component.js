@@ -8,34 +8,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var app_shell_1 = require("@angular/app-shell");
 var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
-var root_1 = require("./root");
-var map_1 = require("./map");
-var dashboard_1 = require("./dashboard");
-var shared_1 = require("./shared");
-var material_1 = require("@angular/material");
-var AppModule = (function () {
-    function AppModule() {
+var PanelComponent = (function () {
+    function PanelComponent() {
+        this.open = false;
     }
-    return AppModule;
+    return PanelComponent;
 }());
-AppModule = __decorate([
-    core_1.NgModule({
-        bootstrap: [root_1.RootComponent],
-        declarations: [
-            root_1.RootComponent
-        ],
-        imports: [
-            app_shell_1.AppShellModule,
-            common_1.CommonModule,
-            material_1.MaterialModule.forRoot(),
-            dashboard_1.DashboardModule,
-            map_1.MapModule,
-            shared_1.SharedModule
-        ]
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], PanelComponent.prototype, "open", void 0);
+PanelComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'mq-panel',
+        styleUrls: ['panel.component.css'],
+        template: '<ng-content></ng-content>'
     }),
     __metadata("design:paramtypes", [])
-], AppModule);
-exports.AppModule = AppModule;
+], PanelComponent);
+exports.PanelComponent = PanelComponent;

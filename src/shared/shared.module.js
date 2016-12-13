@@ -8,34 +8,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var app_shell_1 = require("@angular/app-shell");
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
-var root_1 = require("./root");
-var map_1 = require("./map");
-var dashboard_1 = require("./dashboard");
-var shared_1 = require("./shared");
-var material_1 = require("@angular/material");
-var AppModule = (function () {
-    function AppModule() {
+var panel_1 = require("./panel");
+var SharedModule = (function () {
+    function SharedModule() {
     }
-    return AppModule;
+    return SharedModule;
 }());
-AppModule = __decorate([
+SharedModule = __decorate([
     core_1.NgModule({
-        bootstrap: [root_1.RootComponent],
         declarations: [
-            root_1.RootComponent
+            panel_1.PanelComponent
+        ],
+        exports: [
+            panel_1.PanelComponent
         ],
         imports: [
-            app_shell_1.AppShellModule,
-            common_1.CommonModule,
-            material_1.MaterialModule.forRoot(),
-            dashboard_1.DashboardModule,
-            map_1.MapModule,
-            shared_1.SharedModule
-        ]
+            common_1.CommonModule
+        ],
+        providers: []
     }),
     __metadata("design:paramtypes", [])
-], AppModule);
-exports.AppModule = AppModule;
+], SharedModule);
+exports.SharedModule = SharedModule;

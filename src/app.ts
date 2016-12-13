@@ -6,20 +6,22 @@ import { RootComponent } from './root';
 
 import { MapModule } from './map';
 import { DashboardModule } from './dashboard';
+import { SharedModule } from './shared';
 
-import {MaterialModule} from '@angular/material';
+import { MaterialModule } from '@angular/material';
 
 @NgModule({
     bootstrap: [RootComponent],
     declarations: [
-        RootComponent
+      RootComponent
     ],
     imports: [
-        AppShellModule,
-        CommonModule,
-        MaterialModule.forRoot(),
-        DashboardModule,
-        MapModule,
+      AppShellModule,
+      CommonModule,
+      MaterialModule.forRoot(),
+      DashboardModule,
+      MapModule,
+      SharedModule
     ]
 })
 export class AppModule { }
