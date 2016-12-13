@@ -15,7 +15,7 @@
   </md-sidenav>
 
   <md-toolbar color="primary">
-    <button md-icon-button (click)="start.open()">
+    <!-- <button md-icon-button (click)="start.open()">
       <md-icon>menu</md-icon>
     </button>
     <button md-button style="flex: 1;">
@@ -23,13 +23,17 @@
     </button>
     <button md-button style="flex: 1;">
       Directions
-    </button>
+    </button> -->
   </md-toolbar>
 
   <div class="body">
-    <mq-map></mq-map>
+    <div class="content">
+      <mq-map></mq-map>
+      <div class="panel"></div>
+    </div>
+
     <md-toolbar class="bottom-nav">
-      <span class="nav-item">
+      <!-- <span class="nav-item">
         <button md-icon-button>
           <md-icon>hotel</md-icon>
         </button>
@@ -53,7 +57,7 @@
         <button md-icon-button>
           <md-icon>local_bar</md-icon>
         </button>
-      </span>
+      </span> -->
     </md-toolbar>
   </div>
 
