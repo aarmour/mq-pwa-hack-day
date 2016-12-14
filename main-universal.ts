@@ -1,13 +1,18 @@
 import 'angular2-universal-polyfills';
 import 'zone.js/dist/zone-node.js'
 import 'reflect-metadata';
+import './__workaround.browser.ts';
+
+// Workaround for Angular material
+var window = global
+global.window = window;
 
 import * as fs from 'fs';
 
-import {CompilerOptions, COMPILER_OPTIONS} from '@angular/core';
-import {ResourceLoader} from '@angular/compiler';
-import {platformUniversalDynamic, REQUEST_URL} from 'angular2-universal/node';
-import {AppUniversalModule} from './src/app-universal';
+import { CompilerOptions, COMPILER_OPTIONS } from '@angular/core';
+import { ResourceLoader } from '@angular/compiler';
+import { platformUniversalDynamic, REQUEST_URL } from 'angular2-universal/node';
+import { AppUniversalModule } from './src/app-universal';
 // from './ngfactory/src/app-universal.ngfactory';
 
 export class FileResourceLoader implements ResourceLoader {

@@ -1,7 +1,8 @@
 {
   "angularCompilerOptions": {
     "genDir": "ngfactory",
-    "skipMetadataEmit": true
+    "skipMetadataEmit": true,
+    "debug": true
   },
   "compilerOptions": {
     "emitDecoratorMetadata": true,

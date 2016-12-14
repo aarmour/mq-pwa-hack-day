@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   moduleId: module.id,
   selector: 'mq-panel',
   styleUrls: ['panel.component.css'],
-  template: '<ng-content></ng-content>'
+  templateUrl: 'panel.component.html'
 })
 export class PanelComponent {
 

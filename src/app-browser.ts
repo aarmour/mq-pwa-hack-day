@@ -1,11 +1,11 @@
-import {AppShellModule} from '@angular/app-shell'
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { AppShellModule } from '@angular/app-shell'
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-import {AppModule} from './app';
-import {RootComponent} from './root';
+import { AppModule } from './app';
+import { RootComponent } from './root';
 
-import {Storage, LocalStorage} from './storage';
+import { Storage, LocalStorage } from './storage';
 
 
 @NgModule({

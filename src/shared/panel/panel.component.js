@@ -24,7 +24,7 @@ PanelComponent = __decorate([
         moduleId: module.id,
         selector: 'mq-panel',
         styleUrls: ['panel.component.css'],
-        template: '<ng-content></ng-content>'
+        templateUrl: 'panel.component.html'
     }),
     __metadata("design:paramtypes", [])
 ], PanelComponent);
