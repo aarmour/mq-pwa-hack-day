@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var app_shell_1 = require("@angular/app-shell");
 var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
 var node_1 = require("angular2-universal/node");
 require("rxjs/add/observable/of");
 var app_1 = require("./app");
@@ -32,7 +33,8 @@ AppUniversalModule = __decorate([
             }),
         ],
         providers: [
-            { provide: storage_1.Storage, useClass: storage_1.InMemoryStorage },
+            { provide: common_1.APP_BASE_HREF, useValue: '/' },
+            { provide: storage_1.Storage, useClass: storage_1.InMemoryStorage }
         ],
     }),
     __metadata("design:paramtypes", [])

@@ -8,31 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var app_shell_1 = require("@angular/app-shell");
 var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
-var platform_browser_1 = require("@angular/platform-browser");
-var app_1 = require("./app");
-var root_1 = require("./root");
-var storage_1 = require("./storage");
-var AppBrowserModule = (function () {
-    function AppBrowserModule() {
+var HomeComponent = (function () {
+    function HomeComponent() {
     }
-    return AppBrowserModule;
+    return HomeComponent;
 }());
-AppBrowserModule = __decorate([
-    core_1.NgModule({
-        bootstrap: [root_1.RootComponent],
-        imports: [
-            platform_browser_1.BrowserModule,
-            app_shell_1.AppShellModule.runtime(),
-            app_1.AppModule
-        ],
-        providers: [
-            { provide: common_1.APP_BASE_HREF, useValue: '/' },
-            { provide: storage_1.Storage, useClass: storage_1.LocalStorage },
-        ]
+HomeComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'mq-home',
+        template: ''
     }),
     __metadata("design:paramtypes", [])
-], AppBrowserModule);
-exports.AppBrowserModule = AppBrowserModule;
+], HomeComponent);
+exports.HomeComponent = HomeComponent;

@@ -6,6 +6,8 @@
 
 <md-toolbar *shellRender></md-toolbar>
 
+<router-outlet *shellRender></router-outlet>
+
 <md-sidenav-layout *shellNoRender>
 
   <md-sidenav #start (open)="closeStartButton.focus()">
@@ -30,7 +32,9 @@
     <div class="content">
       <mq-map></mq-map>
       <!-- <div class="panel"></div> -->
-      <mq-panel></mq-panel>
+      <mq-panel>
+        <router-outlet></router-outlet>
+      </mq-panel>
     </div>
 
     <md-toolbar class="bottom-nav">

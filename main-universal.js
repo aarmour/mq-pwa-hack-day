@@ -36,13 +36,15 @@ Zone.current.fork({
     name: 'universal',
     properties: { document: document }
 }).run(function () {
-    node_1.platformUniversalDynamic([{
+    node_1.platformUniversalDynamic([
+        {
             provide: core_1.COMPILER_OPTIONS,
             useValue: {
                 providers: [{ provide: compiler_1.ResourceLoader, useValue: new FileResourceLoader() }],
             },
             multi: true,
-        }])
+        }
+    ])
         .serializeModule(app_universal_1.AppUniversalModule, {
         preboot: false
     })

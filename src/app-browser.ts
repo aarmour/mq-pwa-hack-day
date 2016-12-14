@@ -1,5 +1,6 @@
 import { AppShellModule } from '@angular/app-shell'
 import { NgModule } from '@angular/core';
+import { APP_BASE_HREF } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppModule } from './app';
@@ -16,7 +17,8 @@ import { Storage, LocalStorage } from './storage';
     AppModule
   ],
   providers: [
-    {provide: Storage, useClass: LocalStorage},
+    { provide: APP_BASE_HREF, useValue: '/' },
+    { provide: Storage, useClass: LocalStorage },
   ]
 })
 export class AppBrowserModule {}

@@ -1,7 +1,8 @@
-import {AppShellModule} from '@angular/app-shell';
-import {ModuleWithProviders, NgModule, Injectable} from '@angular/core';
-import {UniversalModule, parseDocument} from 'angular2-universal/node';
-import {Observable} from 'rxjs/Observable';
+import { AppShellModule } from '@angular/app-shell';
+import { ModuleWithProviders, NgModule, Injectable } from '@angular/core';
+import { APP_BASE_HREF } from '@angular/common';
+import { UniversalModule, parseDocument } from 'angular2-universal/node';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 import {AppModule} from './app';
@@ -20,7 +21,8 @@ import {Storage, InMemoryStorage} from './storage';
     }) as any as ModuleWithProviders,
   ],
   providers: [
-    {provide: Storage, useClass: InMemoryStorage},
+    { provide: APP_BASE_HREF, useValue: '/' },
+    { provide: Storage, useClass: InMemoryStorage }
   ],
 })
 export class AppUniversalModule {}

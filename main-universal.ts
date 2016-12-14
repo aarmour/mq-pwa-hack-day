@@ -10,6 +10,7 @@ global.window = window;
 import * as fs from 'fs';
 
 import { CompilerOptions, COMPILER_OPTIONS } from '@angular/core';
+import { APP_BASE_HREF } from '@angular/common';
 import { ResourceLoader } from '@angular/compiler';
 import { platformUniversalDynamic, REQUEST_URL } from 'angular2-universal/node';
 import { AppUniversalModule } from './src/app-universal';
@@ -40,13 +41,15 @@ Zone.current.fork({
   name: 'universal',
   properties: {document}
 }).run(() => {
-  platformUniversalDynamic([{
-    provide: COMPILER_OPTIONS,
-    useValue: {
-      providers: [{provide: ResourceLoader, useValue: new FileResourceLoader()}],
-    } as CompilerOptions,
-    multi: true,
-  }])
+  platformUniversalDynamic([
+    {
+      provide: COMPILER_OPTIONS,
+      useValue: {
+        providers: [{provide: ResourceLoader, useValue: new FileResourceLoader()}],
+      } as CompilerOptions,
+      multi: true,
+    }
+  ])
     .serializeModule(AppUniversalModule, {
       preboot: false
     })

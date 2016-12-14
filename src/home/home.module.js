@@ -8,31 +8,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var app_shell_1 = require("@angular/app-shell");
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
-var platform_browser_1 = require("@angular/platform-browser");
-var app_1 = require("./app");
-var root_1 = require("./root");
-var storage_1 = require("./storage");
-var AppBrowserModule = (function () {
-    function AppBrowserModule() {
+var home_component_1 = require("./home.component");
+var HomeModule = (function () {
+    function HomeModule() {
     }
-    return AppBrowserModule;
+    return HomeModule;
 }());
-AppBrowserModule = __decorate([
+HomeModule = __decorate([
     core_1.NgModule({
-        bootstrap: [root_1.RootComponent],
-        imports: [
-            platform_browser_1.BrowserModule,
-            app_shell_1.AppShellModule.runtime(),
-            app_1.AppModule
+        declarations: [
+            home_component_1.HomeComponent
         ],
-        providers: [
-            { provide: common_1.APP_BASE_HREF, useValue: '/' },
-            { provide: storage_1.Storage, useClass: storage_1.LocalStorage },
-        ]
+        exports: [
+            home_component_1.HomeComponent
+        ],
+        imports: [
+            common_1.CommonModule
+        ],
+        providers: []
     }),
     __metadata("design:paramtypes", [])
-], AppBrowserModule);
-exports.AppBrowserModule = AppBrowserModule;
+], HomeModule);
+exports.HomeModule = HomeModule;

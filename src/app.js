@@ -11,11 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var app_shell_1 = require("@angular/app-shell");
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
+var router_1 = require("@angular/router");
+var material_1 = require("@angular/material");
 var root_1 = require("./root");
 var map_1 = require("./map");
 var dashboard_1 = require("./dashboard");
 var shared_1 = require("./shared");
-var material_1 = require("@angular/material");
+var home_1 = require("./home");
+var appRoutes = [
+    { path: '', component: home_1.HomeComponent }
+];
 var AppModule = (function () {
     function AppModule() {
     }
@@ -30,10 +35,15 @@ AppModule = __decorate([
         imports: [
             app_shell_1.AppShellModule,
             common_1.CommonModule,
+            router_1.RouterModule.forRoot(appRoutes),
             material_1.MaterialModule.forRoot(),
             dashboard_1.DashboardModule,
+            shared_1.SharedModule,
+            home_1.HomeModule,
             map_1.MapModule,
-            shared_1.SharedModule
+        ],
+        providers: [
+            { provide: common_1.APP_BASE_HREF, useValue: '/' }
         ]
     }),
     __metadata("design:paramtypes", [])
