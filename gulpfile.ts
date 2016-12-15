@@ -66,6 +66,16 @@ function writeServiceWorkerFile(rootDir, handleFetch, callback) {
         }
       },
       {
+        urlPattern: /api\.mapbox\.com\/fonts\/v1\/mapquest\//,
+        handler: 'networkFirst',
+        // See https://github.com/GoogleChrome/sw-toolbox#options
+        options: {
+          cache: {
+            name: 'style-cache'
+          }
+        }
+      },
+      {
         urlPattern: /tiles\.mapbox\.com/,
         handler: 'networkFirst',
         options: {

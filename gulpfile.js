@@ -50,6 +50,15 @@ function writeServiceWorkerFile(rootDir, handleFetch, callback) {
                 }
             },
             {
+                urlPattern: /api\.mapbox\.com\/fonts\/v1\/mapquest\//,
+                handler: 'networkFirst',
+                options: {
+                    cache: {
+                        name: 'style-cache'
+                    }
+                }
+            },
+            {
                 urlPattern: /tiles\.mapbox\.com/,
                 handler: 'networkFirst',
                 options: {
