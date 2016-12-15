@@ -19,7 +19,9 @@ var dashboard_1 = require("./dashboard");
 var shared_1 = require("./shared");
 var home_1 = require("./home");
 var appRoutes = [
-    { path: '', component: home_1.HomeComponent }
+    { path: '', redirectTo: '/home(toolbar:tb-home)', pathMatch: 'full' },
+    { path: 'home', component: home_1.HomeComponent },
+    { path: 'tb-home', component: home_1.HomeToolbarComponent, outlet: 'toolbar' }
 ];
 var AppModule = (function () {
     function AppModule() {

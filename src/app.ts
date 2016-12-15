@@ -9,10 +9,12 @@ import { RootComponent } from './root';
 import { MapModule } from './map';
 import { DashboardModule } from './dashboard';
 import { SharedModule } from './shared';
-import { HomeModule, HomeComponent } from './home';
+import { HomeModule, HomeComponent, HomeToolbarComponent } from './home';
 
 const appRoutes = [
-  { path: '', component: HomeComponent }
+  { path: '', redirectTo: '/home(toolbar:tb-home)', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'tb-home', component: HomeToolbarComponent, outlet: 'toolbar' }
 ];
 
 @NgModule({

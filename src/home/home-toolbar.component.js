@@ -9,31 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
-var material_1 = require("@angular/material");
-var home_component_1 = require("./home.component");
-var home_toolbar_component_1 = require("./home-toolbar.component");
-var HomeModule = (function () {
-    function HomeModule() {
+var HomeToolbarComponent = (function () {
+    function HomeToolbarComponent() {
     }
-    return HomeModule;
+    return HomeToolbarComponent;
 }());
-HomeModule = __decorate([
-    core_1.NgModule({
-        declarations: [
-            home_component_1.HomeComponent,
-            home_toolbar_component_1.HomeToolbarComponent
-        ],
-        exports: [
-            home_component_1.HomeComponent,
-            home_toolbar_component_1.HomeToolbarComponent
-        ],
-        imports: [
-            common_1.CommonModule,
-            material_1.MaterialModule.forRoot()
-        ],
-        providers: []
+HomeToolbarComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'mq-home-toolbar',
+        templateUrl: 'home-toolbar.component.html'
     }),
     __metadata("design:paramtypes", [])
-], HomeModule);
-exports.HomeModule = HomeModule;
+], HomeToolbarComponent);
+exports.HomeToolbarComponent = HomeToolbarComponent;
